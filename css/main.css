@@ -1,4 +1,4 @@
-/* ==========================================================
+/* 
    Lorem Goods - Product Cards - main.css
    normalize.css is imported into the reset layer (see below)
 
@@ -11,7 +11,7 @@
       to the width of its grid cell, not the width of the screen.
 
    Naming: BEM  ->  .block, .block__element, .block--modifier
-   ========================================================== */
+    */
 
 /* Layer order: later layers win over earlier ones.
    normalize.css is imported INTO the "reset" layer (the lowest one).
