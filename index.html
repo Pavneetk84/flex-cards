@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lorem Goods | Product Cards</title>
+    <meta
+      name="description"
+      content="Lorem ipsum dolor sit amet. A responsive grid of product cards built with CSS grid, flexbox and container queries."
+    />
+
+    <!-- 1. Google fonts: preconnect x2, then the stylesheet link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Manrope:wght@400..700&display=swap"
+    />
+
+    <!-- 2. my own styles (main.css imports normalize.css into a cascade layer) -->
+    <link rel="stylesheet" href="css/main.css" />
+
+    <!-- 3. favicons -->
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  </head>
+  <body>
+    <header class="masthead">
+      <p class="masthead__brand">Lorem Goods</p>
+      <h1 class="masthead__title">Lorem ipsum dolor sit amet</h1>
+      <p class="masthead__intro">
+        Consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+    </header>
+
+    <main class="products">
+      <!-- The <ul> is the grid. Each <li> is the CONTAINER (container-type: inline-size)
+           around a .card, so the card can change layout based on the width of its own grid cell. -->
+      <ul class="products__grid" role="list">
+        <li class="products__item">
+          <div class="card">
+            <div class="card__image">
+              <img src="img/mug.jpg" alt="A terracotta ceramic mug with a curved handle and steam rising from it" width="480" height="480" loading="lazy" />
+            </div>
+            <div class="card__content">
+              <h2 class="card__title">Ceramic Mug</h2>
+              <p class="card__info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.</p>
+              <p class="card__price">$18.00</p>
+            </div>
+          </div>
+        </li>
+        <li class="products__item">
+          <div class="card">
+            <div class="card__image">
+              <img src="img/headphones.jpg" alt="Navy over-ear headphones with gold ear cushions" width="480" height="480" loading="lazy" />
+            </div>
+            <div class="card__content">
+              <h2 class="card__title">Wireless Headphones</h2>
+              <p class="card__info">Sed posuere consectetur est at lobortis. Donec ullamcorper nulla non metus auctor fringilla, vestibulum id ligula porta.</p>
+              <p class="card__price">$129.00</p>
+            </div>
+          </div>
+        </li>
+        <li class="products__item">
+          <div class="card">
+            <div class="card__image">
+              <img src="img/watch.jpg" alt="A gold wristwatch with a cream face and brown leather strap" width="480" height="480" loading="lazy" />
+            </div>
+            <div class="card__content">
+              <h2 class="card__title">Classic Watch</h2>
+              <p class="card__info">Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+              <p class="card__price">$215.00</p>
+            </div>
+          </div>
+        </li>
+        <li class="products__item">
+          <div class="card">
+            <div class="card__image">
+              <img src="img/sneaker.jpg" alt="A pink high-top canvas sneaker with a white sole" width="480" height="480" loading="lazy" />
+            </div>
+            <div class="card__content">
+              <h2 class="card__title">Canvas Sneaker</h2>
+              <p class="card__info">Maecenas faucibus mollis interdum. Nullam quis risus eget urna mollis ornare vel eu leo.</p>
+              <p class="card__price">$74.00</p>
+            </div>
+          </div>
+        </li>
+        <li class="products__item">
+          <div class="card">
+            <div class="card__image">
+              <img src="img/plant.jpg" alt="A leafy green plant in a terracotta pot" width="480" height="480" loading="lazy" />
+            </div>
+            <div class="card__content">
+              <h2 class="card__title">Potted Plant</h2>
+              <p class="card__info">Vestibulum id ligula porta felis euismod semper. Curabitur blandit tempus porttitor.</p>
+              <p class="card__price">$32.00</p>
+            </div>
+          </div>
+        </li>
+        <li class="products__item">
+          <div class="card">
+            <div class="card__image">
+              <img src="img/lamp.jpg" alt="A teal adjustable desk lamp casting a warm light" width="480" height="480" loading="lazy" />
+            </div>
+            <div class="card__content">
+              <h2 class="card__title">Desk Lamp</h2>
+              <p class="card__info">Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+              <p class="card__price">$89.00</p>
+            </div>
+          </div>
+        </li>
+        <li class="products__item">
+          <div class="card">
+            <div class="card__image">
+              <img src="img/backpack.jpg" alt="A purple backpack with a front pocket and gold zipper pull" width="480" height="480" loading="lazy" />
+            </div>
+            <div class="card__content">
+              <h2 class="card__title">Day Backpack</h2>
+              <p class="card__info">Nulla vitae elit libero, a pharetra augue. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+              <p class="card__price">$96.00</p>
+            </div>
+          </div>
+        </li>
+        <li class="products__item">
+          <div class="card">
+            <div class="card__image">
+              <img src="img/bottle.jpg" alt="A teal insulated water bottle with a dark cap" width="480" height="480" loading="lazy" />
+            </div>
+            <div class="card__content">
+              <h2 class="card__title">Steel Water Bottle</h2>
+              <p class="card__info">Donec sed odio dui. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+              <p class="card__price">$28.00</p>
+            </div>
+          </div>
+        </li>
+        <li class="products__item">
+          <div class="card">
+            <div class="card__image">
+              <img src="img/camera.jpg" alt="A retro film camera with a brown body and silver lens" width="480" height="480" loading="lazy" />
+            </div>
+            <div class="card__content">
+              <h2 class="card__title">Film Camera</h2>
+              <p class="card__info">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis est non commodo luctus.</p>
+              <p class="card__price">$340.00</p>
+            </div>
+          </div>
+        </li>
+        <li class="products__item">
+          <div class="card">
+            <div class="card__image">
+              <img src="img/candle.jpg" alt="A lit candle in a glass jar with a cream label" width="480" height="480" loading="lazy" />
+            </div>
+            <div class="card__content">
+              <h2 class="card__title">Soy Candle</h2>
+              <p class="card__info">Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula.</p>
+              <p class="card__price">$22.00</p>
+            </div>
+          </div>
+        </li>
+        <li class="products__item">
+          <div class="card">
+            <div class="card__image">
+              <img src="img/sunglasses.jpg" alt="Dark sunglasses with orange gradient lenses" width="480" height="480" loading="lazy" />
+            </div>
+            <div class="card__content">
+              <h2 class="card__title">Sunglasses</h2>
+              <p class="card__info">Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in.</p>
+              <p class="card__price">$65.00</p>
+            </div>
+          </div>
+        </li>
+        <li class="products__item">
+          <div class="card">
+            <div class="card__image">
+              <img src="img/perfume.jpg" alt="A pink glass perfume bottle with a gold neck and black cap" width="480" height="480" loading="lazy" />
+            </div>
+            <div class="card__content">
+              <h2 class="card__title">Eau de Parfum</h2>
+              <p class="card__info">Curabitur blandit tempus porttitor. Donec id elit non mi porta gravida at eget metus.</p>
+              <p class="card__price">$110.00</p>
+            </div>
+          </div>
+        </li>
+        <li class="products__item">
+          <div class="card">
+            <div class="card__image">
+              <img src="img/speaker.jpg" alt="An orange portable speaker with two black drivers" width="480" height="480" loading="lazy" />
+            </div>
+            <div class="card__content">
+              <h2 class="card__title">Bluetooth Speaker</h2>
+              <p class="card__info">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+              <p class="card__price">$79.00</p>
+            </div>
+          </div>
+        </li>
+        <li class="products__item">
+          <div class="card">
+            <div class="card__image">
+              <img src="img/notebook.jpg" alt="A green hardcover notebook with a gold bookmark ribbon" width="480" height="480" loading="lazy" />
+            </div>
+            <div class="card__content">
+              <h2 class="card__title">Linen Notebook</h2>
+              <p class="card__info">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est.</p>
+              <p class="card__price">$16.00</p>
+            </div>
+          </div>
+        </li>
+        <li class="products__item">
+          <div class="card">
+            <div class="card__image">
+              <img src="img/coffee.jpg" alt="A brown bag of coffee beans with a few beans beside it" width="480" height="480" loading="lazy" />
+            </div>
+            <div class="card__content">
+              <h2 class="card__title">Whole Bean Coffee</h2>
+              <p class="card__info">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+              <p class="card__price">$19.50</p>
+            </div>
+          </div>
+        </li>
+        <li class="products__item">
+          <div class="card">
+            <div class="card__image">
+              <img src="img/soap.jpg" alt="A pale blue bar of soap with bubbles floating above it" width="480" height="480" loading="lazy" />
+            </div>
+            <div class="card__content">
+              <h2 class="card__title">Olive Oil Soap</h2>
+              <p class="card__info">Nullam quis risus eget urna mollis ornare vel eu leo. Etiam porta sem malesuada magna mollis euismod.</p>
+              <p class="card__price">$9.00</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2026 Lorem Goods. Images are original illustrations made for this site.</p>
+    </footer>
+  </body>
+</html>

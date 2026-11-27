@@ -1,0 +1,261 @@
+/* ==========================================================
+   Lorem Goods - Product Cards - main.css
+   normalize.css is imported into the reset layer (see below)
+
+   Two levels of responsive layout:
+   1. The GRID of cards (.products__grid) uses display: grid with
+      repeat(auto-fill, minmax(var(--card-min), 1fr)), so the number
+      of columns changes with the screen width.
+   2. Each CARD changes its own layout with @container queries.
+      The <li> around each card is the container, so the card reacts
+      to the width of its grid cell, not the width of the screen.
+
+   Naming: BEM  ->  .block, .block__element, .block--modifier
+   ========================================================== */
+
+/* Layer order: later layers win over earlier ones.
+   normalize.css is imported INTO the "reset" layer (the lowest one).
+   Styles outside any layer always beat layered styles, so if normalize
+   was a plain <link> its h2/p margins would override my layered CSS. */
+@layer reset, base, layout, components;
+@import url('normalize.css') layer(reset);
+
+/* ---------- Custom properties ---------- */
+
+:root {
+  /* Fonts (Google Fonts) */
+  --font-body: 'Manrope', system-ui, sans-serif;
+  --font-display: 'Fraunces', Georgia, serif;
+
+  /* Colours (text pairs pass WCAG AA 4.5:1) */
+  --color-page: #f7f2ea; /* warm paper */
+  --color-surface: #ffffff; /* card background */
+  --color-text: #1f2a27; /* near-black green */
+  --color-muted: #55615d; /* description text, 6.3:1 on white */
+  --color-primary: #1f3a34; /* deep pine */
+  --color-accent: #b4531f; /* price, 4.9:1 on white */
+  --color-border: #e4dccf;
+
+  /* Spacing + shapes */
+  --space-xs: 0.25rem;
+  --space-s: 0.5rem;
+  --space-m: 1rem;
+  --space-l: 1.5rem;
+  --space-xl: 3rem;
+  --radius: 1rem;
+  --max-width: 80rem;
+
+  /* THE minimum width of every card. The grid uses this value
+     to decide how many columns fit. */
+  --card-min: 16rem;
+}
+
+/* On big screens the cards get a bigger minimum width.
+   Fewer, wider columns = each card container is wide enough
+   for the side-by-side card layout. */
+@media (width >= 70em) {
+  :root {
+    --card-min: 24rem;
+  }
+}
+
+/* ---------- Base ---------- */
+
+@layer base {
+  html {
+    font-family: var(--font-body);
+  }
+
+  body {
+    background-color: var(--color-page);
+    color: var(--color-text);
+  }
+
+  h1,
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+}
+
+/* ---------- Page layout ---------- */
+
+@layer layout {
+  .masthead,
+  .products,
+  .footer {
+    inline-size: min(100% - 2 * var(--space-m), var(--max-width));
+    margin-inline: auto;
+  }
+
+  .masthead {
+    padding-block: var(--space-xl) var(--space-l);
+    text-align: center;
+  }
+
+  .masthead__brand {
+    margin-block-end: var(--space-s);
+    color: var(--color-accent);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .masthead__title {
+    margin-block-end: var(--space-m);
+    color: var(--color-primary);
+    font-size: clamp(2rem, 1.4rem + 3vw, 3.5rem);
+    line-height: 1.1;
+  }
+
+  .masthead__intro {
+    max-inline-size: 40ch;
+    margin-inline: auto;
+    color: var(--color-muted);
+  }
+
+  .products {
+    padding-block-end: var(--space-xl);
+  }
+
+  /* 1. THE GRID OF CARDS
+     auto-fill makes as many columns as will fit.
+     Each column is at least var(--card-min) wide (or 100% if the
+     screen is even narrower than that), and shares leftover space (1fr). */
+  .products__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(var(--card-min), 100%), 1fr));
+    gap: var(--space-l);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  /* 2. THE CONTAINER
+     Each <li> is a query container. Its children can use @container
+     to react to the li's inline size (its width). */
+  .products__item {
+    container-type: inline-size;
+    container-name: card;
+  }
+
+  .footer {
+    padding-block: var(--space-l);
+    border-block-start: 1px solid var(--color-border);
+    color: var(--color-muted);
+    font-size: 0.875rem;
+    text-align: center;
+  }
+}
+
+/* ---------- Card component ---------- */
+
+@layer components {
+  /* Default (narrow container): vertical stack, image on top */
+  .card {
+    display: flex;
+    flex-direction: column;
+    block-size: 100%;
+    overflow: hidden;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: 0 0.5rem 1.5rem -1rem rgb(31 58 52 / 0.35);
+  }
+
+  .card__image {
+    /* image wrapper does not grow or shrink inside the flex card */
+    flex: 0 0 auto;
+  }
+
+  /* Card image styles.
+     The image file is 1:1, but aspect-ratio crops it to a wide 4:3
+     shape here. object-fit: cover fills the box without stretching,
+     object-position decides which part stays visible when cropped. */
+  .card__image img {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center 60%;
+  }
+
+  .card__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    gap: var(--space-s);
+    padding: var(--space-m) var(--space-l) var(--space-l);
+  }
+
+  .card__title {
+    margin: 0;
+    color: var(--color-primary);
+    font-size: 1.375rem;
+    line-height: 1.2;
+  }
+
+  /* Multi-line clamp: show at most 3 lines of the description */
+  .card__info {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+  }
+
+  .card__price {
+    /* margin-block-start: auto pushes the price to the bottom of the card */
+    margin: auto 0 0;
+    padding-block-start: var(--space-s);
+    color: var(--color-accent);
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  /* WIDE container: image on one side, content beside it.
+     This depends on the width of the <li>, not the screen. */
+  @container card (inline-size >= 24rem) {
+    .card {
+      flex-direction: row;
+    }
+
+    .card__image {
+      flex: 0 0 40%;
+    }
+
+    /* Change the image shape to a tall portrait crop.
+       min-block-size lets it stretch if the text is taller. */
+    .card__image img {
+      min-block-size: 100%;
+      aspect-ratio: 3 / 4;
+      object-position: center center;
+    }
+
+    .card__content {
+      justify-content: center;
+      padding: var(--space-l);
+    }
+  }
+
+  /* VERY wide container (e.g. one column on a tablet):
+     a bit more breathing room and a square image. */
+  @container card (inline-size >= 36rem) {
+    .card__image {
+      flex-basis: 35%;
+    }
+
+    .card__image img {
+      aspect-ratio: 1 / 1;
+    }
+
+    .card__title {
+      font-size: 1.625rem;
+    }
+  }
+}
